@@ -12,4 +12,63 @@ public class FinancialDTO {
     private BigDecimal limit;
     private BigDecimal wam;
     private BigDecimal tripwireWAM;
+
+}
+
+
+{
+    "entity": "ABC Corp",
+    "notional": 1000000.00,
+    "tripWireGap": 50000.00,
+    "limitGap": 200000.00,
+    "notionalRecycled": 150000.00,
+    "tripwire": 75000.00,
+    "limit": 900000.00,
+    "wam": 12.5,
+    "tripwireWAM": 10.75
+}
+
+---
+import lombok.Data;
+import java.math.BigDecimal;
+
+@Data
+public class FinancialDTO {
+    private String entity;
+    private BigDecimal lob;
+    private BigDecimal notional;
+    private BigDecimal notionalDoD;
+    private BigDecimal wam;
+}
+
+
+{
+    "entity": "XYZ Corp",
+    "lob": 5000000.00,
+    "notional": 2500000.00,
+    "notionalDoD": 30000.00,
+    "wam": 15.75
+}
+
+---
+import lombok.Data;
+import java.math.BigDecimal;
+
+@Data
+public class FinancialDTO {
+    private String entity;
+    private BigDecimal counterparty;
+    private BigDecimal notional;
+    private BigDecimal notionalPct;
+    private BigDecimal tenor;
+    private BigDecimal wam;
+}
+
+{
+    "entity": "LMN Corp",
+    "counterparty": 1000000.00,
+    "notional": 500000.00,
+    "notionalPct": 50.00,
+    "tenor": 5.00,
+    "wam": 12.50
 }

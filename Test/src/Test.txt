@@ -1,0 +1,15 @@
+import lombok.Data;
+import java.math.BigDecimal;
+
+@Data
+public class FinancialDTO {
+    private String entity;
+    private BigDecimal notional;
+    private BigDecimal tripWireGap;
+    private BigDecimal limitGap;
+    private BigDecimal notionalRecycled;
+    private BigDecimal tripwire;
+    private BigDecimal limit;
+    private BigDecimal wam;
+    private BigDecimal tripwireWAM;
+}

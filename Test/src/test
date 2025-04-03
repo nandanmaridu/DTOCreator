@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Check if exactly 3 arguments are passed
+if [ "$#" -ne 3 ]; then
+    echo "Usage: sh $0 <string> <list1> <list2>"
+    echo "Example: sh $0 CIT \"test1,test2,test3\" \"01,02,03\""
+    exit 1
+fi
+
+# Assign inputs
+main_string="$1"
+list1="$2"
+list2="$3"
+
+# Convert comma-separated strings into arrays
+IFS=',' read -ra array1 <<< "$list1"
+IFS=',' read -ra array2 <<< "$list2"
+
+# Check if the two lists are of the same length
+if [ "${#array1[@]}" -ne "${#array2[@]}" ]; then
+    echo "Error: List lengths do not match."
+    exit 1
+fi
+
+# Print output
+for i in "${!array1[@]}"; do
+    echo "$main_string - ${array1[$i]} - ${array2[$i]}"
+done

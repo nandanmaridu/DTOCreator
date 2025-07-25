@@ -26,3 +26,14 @@ fi
 for i in "${!array1[@]}"; do
     echo "$main_string - ${array1[$i]} - ${array2[$i]}"
 done
+
+
+I wanted to provide a quick update regarding a recent issue that briefly impacted the GFX workflow in production.
+
+Earlier today, we introduced a new column to one of our database tables as part of ongoing improvements to support the liquidity workflow. The column was added with a NOT NULL constraint and was successfully validated during liquidity workflow testing.
+
+However, post-deployment, we observed that the GFX workflow began encountering issues when inserting new records. This was due to the JPA layer attempting to write null to the newly added column—behavior not encountered during liquidity workflow testing.
+
+Upon identifying the root cause, we promptly removed the NOT NULL constraint on the new column. This change resolved the issue, and both liquidity and GFX workflows are now functioning as expected in production.
+
+We’re also reviewing our test coverage and deployment checks to help prevent similar scenarios in the future.
